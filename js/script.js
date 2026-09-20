@@ -64,3 +64,22 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* =====================================================
+   GALERIA DE FOTOS DOS PRODUTOS
+   Alterna entre frente e costas usando os pontinhos.
+===================================================== */
+document.querySelectorAll('.product-gallery').forEach((gallery) => {
+  const images = gallery.querySelectorAll('.product-image');
+  const dots = gallery.querySelectorAll('.gallery-dot');
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      images.forEach((image) => image.classList.remove('active'));
+      dots.forEach((item) => item.classList.remove('active'));
+
+      images[index].classList.add('active');
+      dot.classList.add('active');
+    });
+  });
+});
